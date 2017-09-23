@@ -16,11 +16,11 @@ div.navigation-frame
                    fill="forwards" from="0.1 0.1 0.1" to="1 1 1")
         a-animation(begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
                    fill="backwards" from="1 1 1" to="0.1 0.1 0.1")
-  div.helper < Вращайте изображение >
-  div.helper.description Подойдите к указанной точке и нажмите "далее"
-  a.next(v-on:click="nextStep()" v-if="hasNext()") Далее
-  a.next.ready(v-if="!hasNext()") Вы на месте!
-  a.prev(v-on:click="prevStep()" v-if="hasPrev()") Назад
+  div.helper(v-if="!inVRmode") < Вращайте изображение >
+  div.helper.description(v-if="!inVRmode") Подойдите в указанном направлении и нажмите "далее"
+  a.next(v-on:click="nextStep()" v-if="!inVRmode && hasNext()") Далее
+  a.next.ready(v-if="!inVRmode && !hasNext()") Вы на месте!
+  a.prev(v-on:click="prevStep()" v-if="!inVRmode && hasPrev()") Назад
 </template>
 
 <script lang="coffee">
